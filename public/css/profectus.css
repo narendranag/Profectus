@@ -1,0 +1,114 @@
+html { background: #eee; } 
+
+body {
+	width: 950px;
+	min-height: 900px;
+	background: #999;
+	margin: 10px auto;
+	color: #eee;
+	-moz-box-shadow: 0px 0px 6px #000;
+	-webkit-box-shadow: 0px 0px 6px #000;
+	box-shadow: 0px 0px 6px #000;
+	-ms-filter: "progid:DXImageTransform.Microsoft.dropShadow(color=#666666, offX=1, offY=0,  positive=true)";
+	filter: progid:DXImageTransform.Microsoft.dropShadow(color=#666666, offX=1, offY=0,  positive=true);
+}
+
+.left-shift {
+	padding-left: 10px;
+}
+
+.menu {
+	border-top: 1px solid #888;
+	margin-right : -600px;
+	height: 22px;
+	padding-left: 40px;
+	padding-top: 10px;
+	font-size: 20px;
+	font-weight: 100;
+}
+
+	.selected {
+		background: #333;
+		color: #FFF;
+	}
+
+	.unselected {
+		background: #666;
+		color: #AAA;
+	}
+
+		.unselected:hover {
+			cursor: pointer;
+			background: #555;
+			color: #FFF;
+		}
+		
+	.disabled {
+		background: #888;
+		color: #666;
+	}
+
+.interface {
+	margin-right: -20px;
+	min-height: 300px;
+	padding: 20px;
+	
+}
+	
+.interface-menu {
+	color: #bbb;
+	margin-right : -20px;
+	height: 22px;
+	padding-right: 20px;
+	padding-top: 5px;
+	text-align: right;
+}
+	.interface-menu a {
+		color: #bbb;
+		text-decoration: none;
+	}
+		.interface-menu a:hover {color: #eee;}
+	
+#display {
+	color: #222;
+	font-size: 80%;
+	margin: 10px;
+	padding: 10px;
+	background: white;
+	min-height: 800px;
+	-moz-box-shadow: 0px 0px 10px #333;
+	-webkit-box-shadow: 0px 0px 10px #333;
+	box-shadow: 0px 0px 10px #333;
+	-ms-filter: "progid:DXImageTransform.Microsoft.dropShadow(color=#666666, offX=2, offY=2,  positive=true)";
+	filter: progid:DXImageTransform.Microsoft.dropShadow(color=#666666, offX=2, offY=2,  positive=true);
+}
+	#display h1 {
+		text-align: right;
+	}
+
+
+.wizard {
+	padding: 1.5em;
+	background: #c3d9ff; 
+	border-bottom: #999 2px solid;
+}
+
+/* Table Values */
+
+.topborder {
+	border-top: #999 1px solid;
+}
+
+.amount {
+	text-align: right;
+	padding: 0px 10px 0px 0px;
+}
+
+.details {
+	padding: 0px 40px 0px 20px;
+}
+
+.summary { 
+	background: #c3d9ff; 
+	border-top: #999 1px solid;
+}

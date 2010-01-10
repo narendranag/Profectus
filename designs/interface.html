@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>profectus</title>
+	<link rel="stylesheet" href="public/css/reset.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="public/css/grid.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="public/css/typography.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="public/css/forms.css" type="text/css" media="screen" title="no title" charset="utf-8">
+
+
+	<script src="public/js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script>
+	$(document).ready( function() {
+		$("#button").click( function() {
+			
+			var text = ($("#button").html() == "show pane") ? "hide pane" : "show pane";
+			$("#button").html(text);
+			$("#interaction-pane").toggle("slow");
+		});
+	});
+	</script>
+	
+	<style type="text/css" media="screen">
+	.header {
+		background: #999; 
+		color: #ccc;
+		padding: 5px 0px;
+	}
+		.header span {
+			padding: 5px 10px;
+		}
+	
+		.header a, a:visited {
+			padding: 5px 10px;
+			color: #ccc;
+			text-decoration:none;
+		}
+		
+		.header a:hover {
+			color: #eee;
+			background: #666;
+		}
+		
+		.header div.right {
+			float:right;
+		}
+	
+	#button {
+		background: #999; 
+		color: #ccc;
+		text-align: center;
+	}
+		#button:hover{ color: #eee; background: #666; cursor:pointer; cursor:hand;}
+	
+	.wizard {
+		padding: 1.5em;
+		background: #c3d9ff; 
+		border-bottom: #999 2px solid;
+	}
+	
+	/* Table Values */
+	
+	.topborder {
+		border-top: #999 1px solid;
+	}
+
+	.amount {
+		text-align: right;
+		padding: 0px 10px 0px 0px;
+	}
+
+	.details {
+		padding: 0px 40px 0px 20px;
+	}
+
+	.summary { 
+		background: #c3d9ff; 
+		border-top: #999 1px solid;
+	}
+	</style>
+</head>
+
+<body id="interface">
+<div class="container">
+	
+	<div class="header span-24 last">
+		<span>profectus</span>
+		<div class="right">
+		<a href="#">new invoice</a>
+		<a href="#">print invoice</a>
+		<a href="#">inventory</a>
+		<a href="#">sales report<a/>
+		<a href="auth/logout">logout</a>
+		</div>
+	</div>
+	
+	<div id="interaction-pane" class="prepend-1 span-22 append-1 last hide">
+	<div class="wizard">
+		<div id="stage-1">
+			<p class="quiet">Enter the name of the client you want to create an invoice for.</p>
+			<label for="client" >
+				Choose Client
+			</label><br/>
+			<input type="hidden" name="client_id" value="0" id="client_id">
+			<input type="text" name="client" value="" id="client">
+			<input type="button" name="choose_client" value=" Go " id="choose_client">
+		</div>
+		
+		<div id="stage-2" class="hide">
+			<p id="client_message" class="quiet">You can now update the client's contact details. <br/>Click <span class="loud">Update</span> when done, or click <span class="loud">Next</span> to start filling in invoice details.</p>
+			
+			<div class="span-4">
+			<label for="client_address">Address</label><br/>
+			<input type="text" name="client_address" value="" id="client_address"><br/>
+			</div>
+
+			<div class="span-4">
+			<label for="client_number">Contact Number *</label><br/>
+			<input type="text" name="client_number" value="" id="client_number"><br/>
+			</div>
+			
+			<div class="span-4">
+			<label for="client_email" >Email Address</label><br/>
+			<input type="text" name="client_email" value="" id="client_email"><br/>
+			</div>
+			
+			<div class="clear"></div>
+			
+			<input type="button" name="save_client" value=" Add " id="save_client">
+			<input type="button" name="next" value=" Next " id="next">
+		</div>
+		
+		<div id="stage-3" class="hide">
+			<p class="quiet">Enter item code as written on tag (JBA-1).</p>
+			
+			<label for="inventory">Add Item</label><br/>
+			<input type="hidden" name="inventory_id" value="0" id="inventory_id">
+			<input type="text" name="inventory" value="" id="inventory">
+			<input type="button" name="choose_inventory" value=" Add " id="choose_inventory">
+		</div>
+		
+		<div id="discount" class="hide">
+			<p class="quiet">Enter discount percentage: 1-5. Do not input the percentage sign.</p>
+			
+			<label for="discount_percentage">Discount Percentage</label><br/>
+			<input type="text" name="discount_amount" value="0.0" id="discount_amount"><br/>
+			<input type="button" name="calculate_discount" value=" Calculate Discount " id="calculate_discount">
+			<input type="button" name="give_discount" value=" Give Discount " id="give_discount">
+		</div>
+	</div>
+	</div>
+	
+	<div id="button" class="push-19 span-3 append-2 append-bottom last">show pane</div>
+	
+	<div class="prepend-15 span-9 last">
+		<h1>Jewelry By Arunima</h1>
+	</div>
+	
+	<div class="prepend-1 span-3 append-1">
+		<h2>INVOICE</h2>
+		<span id="invoice-number">ddmmyyyy/xxx</span><br/>
+		<span id="tax-number">TIN: 08354051856</span><br/>
+	</div>
+	
+	<div class="span-19 last">
+		<div class="prepend-16 span-3 last">
+			1 January 2010
+		</div>
+		<div class="span-19">
+			<span id="client-name">Client Name</span><br/>
+			<span class="small" id="mobile-number">+91 9999999999</span>
+		</div>
+	</div>
+	
+	<hr class="space" />
+	
+	<div class="prepend-1 span-4">
+		<p class="small">
+			B-129 Sector 14,<br/>
+			<strong>Noida</strong> 201301<br/>
+			458 Nemi Sagar Colony,<br/>
+			<strong>Jaipur</strong> 302021
+		</p>
+		<p class="small">
+			<strong>T</strong> +91 99107 77092<br/>
+			<strong>F</strong> +91 120 4359434<br/>
+			<strong>E</strong> sales@jewelrybyarunima.com<br/>
+			<strong>W</strong> jewelrybyarunima.com
+		</p>
+	</div>
+	
+	<div class="span-18 append-1 last">
+		<table>
+			<thead>
+				<th>Code</th>
+				<th>Item</th>
+				<th class="amount">Amount</th>
+			</thead>
+			
+			<tbody>
+			
+				<tr>
+					<td class="topborder">V2 688</td>
+					<td class="topborder">Pendant Diamond Kalaf</td>
+					<td class="amount topborder">Rs. 57,000.00</td>
+				</tr>
+				<tr>
+					<td class="details"></td>
+					<td class="details small">Gold 12 gms</td>
+					<td class="small amount">Rs. 24,000.00</td>
+				</tr>
+				<tr>
+					<td class="details"></td>
+					<td class="details small">Diamonds 6 Kt</td>
+					<td class="small amount">Rs. 30,000.00</td>
+				</tr>
+				<tr>
+					<td class="details"></td>
+					<td class="details small">Labour</td>
+					<td class="small amount">Rs. 3,000.00</td>
+				</tr>
+
+
+				<tr>
+					<td class="topborder">V2 688</td>
+					<td class="topborder">Pendant Diamond Kalaf</td>
+					<td class="amount topborder">Rs. 57,000.00</td>
+				</tr>
+				<tr>
+					<td class="details"></td>
+					<td class="details small">Gold 12 gms</td>
+					<td class="small amount">Rs. 24,000.00</td>
+				</tr>
+				<tr>
+					<td class="details"></td>
+					<td class="details small">Diamonds 6 Kt</td>
+					<td class="small amount">Rs. 30,000.00</td>
+				</tr>
+				<tr>
+					<td class="details"></td>
+					<td class="details small">Labour</td>
+					<td class="small amount">Rs. 3,000.00</td>
+				</tr>
+
+				<tr>
+					<td colspan=2 class="summary">Total</td>
+					<td class="amount summary"></td>
+				</tr>
+				<tr>
+					<td colspan=2 class="summary">Discount</td>
+					<td class="amount summary"></td>
+				</tr>
+				<tr>
+					<td colspan=2 class="summary">Advance</td>
+					<td class="amount summary"></td>
+				</tr>
+				<tr>
+					<td colspan=2 class="summary">Balance</td>
+					<td class="amount summary"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
